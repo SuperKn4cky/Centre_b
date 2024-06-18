@@ -1,59 +1,143 @@
-{% extends 'base.html.twig' %}
+{# templates/home/index.html.twig #}
+{% extends "base.html.twig" %}
 
-{% block title %}Home Page
+{% block title %}Centre B : Accueil
 {% endblock %}
-
+{% block page_name %}
+	Menu Hebdomadaire
+{% endblock %}
 {% block body %}
-<div>
-    <div class="d-flex justify-content-center align-items-center m-5 gap-1">
-        <div>
-            <img class="w-25" src="{{ asset('imgs/logo.png') }}" alt="">
-        </div>
-        <div>
-            <h1>Centre B - Restauration</h1>
-        </div>
-    </div>
-    <div>
-        {# carousel #}
-        <div id="carouselExampleAutoplaying" class="carousel slide w-50 m-auto" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                <img src="{{ asset('imgs/01.jpg') }}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block bg-secondary bg-gradient rounded opacity-75">
-                    <h5>Des plats et du choix</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a venenatis velit, nec feugiat urna.</p>
-                </div>
-                </div>
-                <div class="carousel-item">
-                <img src="{{ asset('imgs/02.jpg') }}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block bg-secondary bg-gradient rounded opacity-75">
-                    <h5>Des produits de qualité</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a venenatis velit, nec feugiat urna.</p>
-                </div>
-                </div>
-                <div class="carousel-item">
-                <img src="{{ asset('imgs/03.jpg') }}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block bg-secondary bg-gradient rounded opacity-75">
-                    <h5>La convivialité</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a venenatis velit, nec feugiat urna.</p>
-                </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-        {# carousel #}
-    </div>
-</div>
+	<div class="menu container-fluid">
+		<div class="row mx-lg-n5">
+			<div class="col  menuBorder  menuHeader text-center" style="border-top-left-radius: 20px"></div>
+			<div class="col py-3 px-lg-5 menuBorder  menuHeader text-center">Lundi
+				<br>
+				{{ menu[menu|last.id - 20].date | date("Y-m-d") }}
+			</div>
+			<div class="col py-3 px-lg-5 menuBorder  menuHeader text-center">Mardi
+				<br>
+				{{ menu[menu|last.id - 18].date | date("Y-m-d") }}
+			</div>
+			<div class="col py-3 px-lg-5 menuBorder  menuHeader text-center">Mercredi
+				<br>
+				{{ menu[menu|last.id - 16].date | date("Y-m-d") }}
+			</div>
+			<div class="col py-3 px-lg-5 menuBorder  menuHeader text-center">Jeudi
+				<br>
+				{{ menu[menu|last.id - 14].date | date("Y-m-d") }}
+			</div>
+			<div class="col py-3 px-lg-5 menuBorder  menuHeader text-center" style="border-top-right-radius: 20px">Vendredi
+				<br>
+				{{ menu[menu|last.id - 12].date | date("Y-m-d") }}
+			</div>
+		</div>
+		<div class="row mx-lg-n5 align-items-center">
+			<div class="col  menuBorder  menuLeft text-center">Service 1</div>
+			<div class="col py-3 px-lg-5 menuBorder  menuContent text-center">
+				{{ menu[menu|last.id - 20].entree.nom}}<br>
+				composition :
+				{{ menu[menu|last.id - 20].entree.composition}}<br><br>
+				{{ menu[menu|last.id - 20].platun.nom}}<br>
+				composition :
+				{{ menu[menu|last.id - 20].platun.composition}}<br><br>
+				{{ menu[menu|last.id - 20].platdeux.nom}}<br>
+				{{ menu[menu|last.id - 20].plattrois.nom}}<br>
+				{{ menu[menu|last.id - 20].dessert.nom}}</div>
+			<div class="col py-3 px-lg-5 menuBorder  menuContent text-center">
+				{{ menu[menu|last.id - 18].entree.nom}}<br>
+				composition :
+				{{ menu[menu|last.id - 18].entree.composition}}<br><br>
+				{{ menu[menu|last.id - 18].platun.nom}}<br>
+				composition :
+				{{ menu[menu|last.id - 18].platun.composition}}<br><br>
+				{{ menu[menu|last.id - 18].platdeux.nom}}<br>
+				{{ menu[menu|last.id - 18].plattrois.nom}}<br>
+				{{ menu[menu|last.id - 18].dessert.nom}}</div>
+			<div class="col py-3 px-lg-5 menuBorder  menuContent text-center">
+				{{ menu[menu|last.id - 16].entree.nom}}<br>
+				composition :
+				{{ menu[menu|last.id - 16].entree.composition}}<br><br>
+				{{ menu[menu|last.id - 16].platun.nom}}<br>
+				composition :
+				{{ menu[menu|last.id - 16].platun.composition}}<br><br>
+				{{ menu[menu|last.id - 16].platdeux.nom}}<br>
+				{{ menu[menu|last.id - 16].plattrois.nom}}<br>
+				{{ menu[menu|last.id - 16].dessert.nom}}</div>
+			<div class="col py-3 px-lg-5 menuBorder  menuContent text-center">
+				{{ menu[menu|last.id - 14].entree.nom}}<br>
+				composition :
+				{{ menu[menu|last.id - 14].entree.composition}}<br><br>
+				{{ menu[menu|last.id - 14].platun.nom}}<br>
+				composition :
+				{{ menu[menu|last.id - 14].platun.composition}}<br><br>
+				{{ menu[menu|last.id - 14].platdeux.nom}}<br>
+				{{ menu[menu|last.id - 14].plattrois.nom}}<br>
+				{{ menu[menu|last.id - 14].dessert.nom}}</div>
+			<div class="col py-3 px-lg-5 menuBorder  menuContent text-center">
+				{{ menu[menu|last.id - 12].entree.nom}}<br>
+				composition :
+				{{ menu[menu|last.id - 12].entree.composition}}<br><br>
+				{{ menu[menu|last.id - 12].platun.nom}}<br>
+				composition :
+				{{ menu[menu|last.id - 12].platun.composition}}<br><br>
+				{{ menu[menu|last.id - 12].platdeux.nom}}<br>
+				{{ menu[menu|last.id - 12].plattrois.nom}}<br>
+				{{ menu[menu|last.id - 12].dessert.nom}}</div>
+		</div>
+		<div class="row mx-lg-n5 align-items-center">
+			<div class="col menuBorder  menuLeft text-center" style="border-bottom-left-radius: 20px">Service 2</div>
+			<div class="col py-3 px-lg-5 menuBorder  menuContent text-center">
+				{{ menu[menu|last.id - 19].entree.nom}}<br>
+				composition :
+				{{ menu[menu|last.id - 19].entree.composition}}<br><br>
+				{{ menu[menu|last.id - 19].platun.nom}}<br>
+				composition :
+				{{ menu[menu|last.id - 19].platun.composition}}<br><br>
+				{{ menu[menu|last.id - 19].platdeux.nom}}<br>
+				{{ menu[menu|last.id - 19].plattrois.nom}}<br>
+				{{ menu[menu|last.id - 19].dessert.nom}}</div>
+			<div class="col py-3 px-lg-5 menuBorder  menuContent text-center">
+				{{ menu[menu|last.id - 17].entree.nom}}<br>
+				composition :
+				{{ menu[menu|last.id - 17].entree.composition}}<br><br>
+				{{ menu[menu|last.id - 17].platun.nom}}<br>
+				composition :
+				{{ menu[menu|last.id - 17].platun.composition}}<br><br>
+				{{ menu[menu|last.id - 17].platdeux.nom}}<br>
+				{{ menu[menu|last.id - 17].plattrois.nom}}<br>
+				{{ menu[menu|last.id - 17].dessert.nom}}</div>
+			<div class="col py-3 px-lg-5 menuBorder  menuContent text-center">
+				{{ menu[menu|last.id - 15].entree.nom}}<br>
+				composition :
+				{{ menu[menu|last.id - 15].entree.composition}}<br><br>
+				{{ menu[menu|last.id - 15].platun.nom}}<br>
+				composition :
+				{{ menu[menu|last.id - 15].platun.composition}}<br><br>
+				{{ menu[menu|last.id - 15].platdeux.nom}}<br>
+				{{ menu[menu|last.id - 15].plattrois.nom}}<br>
+				{{ menu[menu|last.id - 15].dessert.nom}}</div>
+			<div class="col py-3 px-lg-5 menuBorder  menuContent text-center">
+				{{ menu[menu|last.id - 13].entree.nom}}<br>
+				composition :
+				{{ menu[menu|last.id - 13].entree.composition}}<br><br>
+				{{ menu[menu|last.id - 13].platun.nom}}<br>
+				composition :
+				{{ menu[menu|last.id - 13].platun.composition}}<br><br>
+				{{ menu[menu|last.id - 13].platdeux.nom}}<br>
+				{{ menu[menu|last.id - 13].plattrois.nom}}<br>
+				{{ menu[menu|last.id - 13].dessert.nom}}</div>
+			<div class="col py-3 px-lg-5 menuBorder  menuContent text-center " style="border-bottom-right-radius: 20px">
+				{{ menu[menu|last.id - 11].entree.nom}}<br>
+				composition :
+				{{ menu[menu|last.id - 11].entree.composition}}<br><br>
+				{{ menu[menu|last.id - 11].platun.nom}}<br>
+				composition :
+				{{ menu[menu|last.id - 11].platun.composition}}<br><br>
+				{{ menu[menu|last.id - 11].platdeux.nom}}<br>
+				{{ menu[menu|last.id - 11].plattrois.nom}}<br>
+				{{ menu[menu|last.id - 11].dessert.nom}}</div>
+		</div>
+	</div>
+
+
 {% endblock %}

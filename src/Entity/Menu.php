@@ -44,9 +44,24 @@ class Menu
     #[ORM\JoinColumn(nullable: false)]
     private ?Plat $dessert = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $quantitéviande = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $quantitépoisson = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $quantitévegi = null;
+
+    /**
+     * @var Collection<int, Commande>
+     */
+    #[ORM\OneToMany(targetEntity: Commande::class, mappedBy: 'MenuId')]
+    private Collection $commandes;
     public function __construct()
     {
         $this->plats = new ArrayCollection();
+        $this->commandes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -146,6 +161,72 @@ class Menu
     public function setDessert(?Plat $dessert): static
     {
         $this->dessert = $dessert;
+
+        return $this;
+    }
+
+    public function getQuantitéViande(): ?int
+    {
+        return $this->quantitéviande;
+    }
+
+    public function setQuantitéViande(?int $quantitéviande): static
+    {
+        $this->quantitéviande = $quantitéviande;
+
+        return $this;
+    }
+
+    public function getQuantitépoisson(): ?int
+    {
+        return $this->quantitépoisson;
+    }
+
+    public function setQuantitépoisson(?int $quantitépoisson): static
+    {
+        $this->quantitépoisson = $quantitépoisson;
+
+        return $this;
+    }
+
+    public function getQuantitévegi(): ?int
+    {
+        return $this->quantitévegi;
+    }
+
+    public function setQuantitévegi(?int $quantitévegi): static
+    {
+        $this->quantitévegi = $quantitévegi;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commande>
+     */
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
+
+    public function addCommande(Commande $commande): static
+    {
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes->add($commande);
+            $commande->setMenuId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commande $commande): static
+    {
+        if ($this->commandes->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getMenuId() === $this) {
+                $commande->setMenuId(null);
+            }
+        }
 
         return $this;
     }

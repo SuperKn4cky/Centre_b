@@ -1,245 +1,226 @@
-body {
-    background-color: #cacaca;
+* {
+    /* outline: 1px dashed purple; */
 }
 
-.overlay_login {
-    position: relative;
-    background-image: url('/image/chef-cuisine.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    overflow: hidden;
-}
+/* top header */
 
-.overlay_login::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-}
-
-.overlay_register {
-    position: relative;
-    background-image: url('/image/cantine-étudiant.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.overlay_register::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-}
-
-.back {
+#header_top {
+    height: 10vh;
+    min-width: 80%;
+    background-color: rgb(0, 93, 109);
+    opacity: 0.8;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+    position: fixed;
+    margin-left: 20vw;
+    z-index: 1000;
 }
 
-.link_btn {
-    width: 250px;
-    height: 500px;
-    display: block;
-    text-decoration: none;
-}
-
-.add {
-    width: 250px;
-    height: 500px;
-    padding: 0;
-    border-radius: 25px;
-    background: #1e7b7d;
-    border: solid 5px black;
-    display: flex;
-    flex-direction: column;
-}
-
-.add:hover {
-    background-color: #3aa6aa;
-    border: solid 5px black;
-}
-
-.add_div {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    margin-left: 69px;
-    border-radius: 100%;
-    z-index: 1;
-    background-color: #55cfcd;
-    border: solid 5px black;
-}
-
-.add_span {
-    position: relative;
-    z-index: 2;
-    font-size: 100px;
+#header_top > h1 {
     margin: 0;
-    margin-top: 150px;
-    margin-bottom: 12px;
-    max-height: 25px !important;
+    padding: 0;
+    padding-left: 10px;
+    color: white;
+    font-size: 1.5vw;
+    text-align: center;
+    line-height: 10vh;
 }
 
-.menu {
-    width: 250px !important;
-    height: 500px !important;
+#header_top > h2 {
+    margin: 0;
     padding: 0;
-    border-radius: 25px;
-    background: #1e7b7d;
-    border: solid 5px black;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 1.5vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#header_top > div > a {
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+}
+
+#user {
+    margin: 0;
+    padding: 0;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+#user > a {
+    margin: 20px;
+    justify-content: center;
+}
+
+#user > a:last-child {
+    height: 50%;
+    padding-right: 15px;
+}
+
+#user > a > svg {
+    height: 100%;
+    width: auto;
+    color: white;
+}
+
+/* left header */
+
+#header_left {
+    width: 20vw;
+    height: 100vh;
+    background-color: #005c6d;
+    opacity: 0.8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+}
+
+#header_logo {
+    width: 60%;
+    height: auto;
+    margin: 30px;
+    border-radius: 3px;
+}
+
+#header_left > a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    margin: 10px;
+}
+
+#header_left > :last-child {
+    margin-top: auto;
+    margin-bottom: 30px;
+}
+
+#header_left > :not(:last-child):not(img) {
+    padding: 10px;
+    border-bottom: 2px solid white;
+}
+
+/* main content */
+
+body {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.137);
+    min-height: 100vh;
+    min-width: 100vw;
+    width: auto;
+    margin: 0;
+}
+
+main {  
+    width: 100%;
+}
+
+section {
+    min-height: 80vh;
+    margin-top: calc(10vh + 10px);
+    margin-left: 20vw;
+    padding: 15px;
+}
+
+#login_form {
+    margin: 10vh 20vh 0 20vh;
     display: flex;
     flex-direction: column;
 }
 
-.menu_name {
-    background-color: #55cfcd;
-    border-radius: 5px;
-    border: black 2px solid;
-    text-align: center;
-    margin-top: 1em;
-    width: 200px;
-    margin-left: 20px;
+#login_form > button {
+    margin-top: 20px;
 }
 
-.menu_optionPlat,
-.menu_date h4 {
-    background-color: #55cfcd;
+/* Form new user */
+
+#form_new_user {
+    margin: 9vh 20vw 0 20vw;
+    padding:  20px 30px 20px 30px;  
     border-radius: 5px;
-    border: black 2px solid;
-    text-align: center;
-    margin-top: 1em;
-    width: 200px;
-    margin-left: 5px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    opacity: 0.8;
+    width: 40%;
 }
 
-.menu_date h5 {
-    background-color: #3aa6aa;
-    border-radius: 5px;
-    border: black 2px solid;
-    text-align: center;
-    width: 200px;
-    margin-left: 5px;
-    text-wrap: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+#users-table {
+    width: 100%;
+}
+#users-table td:not(:last-child) {
+    border-right: 1px solid #dee2e6;
 }
 
-.btns {
+#users-table tr {
+    text-align: center;
+}
+
+.table tbody tr:nth-child(odd) td {
+    background-color: rgb(241, 241, 241);
+}
+.table tbody tr:nth-child(odd) th {
+    background-color: rgb(241, 241, 241);
+}
+
+#users-table .password-cell {
+    max-width: 300px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.menuBorder {
+    border: 2px solid rgba(0, 0, 0, 0.664);
+}
+
+.menu
+{
+    width: 70vw;
+    margin-left: 50px;
+    background-color: rgba(255, 255, 255, 0.74);
+    border-radius: 20px;
+
+}
+
+.menuHeader {
     display: flex;
-    flex-direction: row;
-    padding-left: 35%;
-    margin-top: 1em;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
+    height: 5vh;
 }
 
-.delete_btn {
-    margin-right: 1em;
+.menuLeft {
+    height: 40vh;
+    width: 1vw;
+    padding-top: 13%;
 }
 
-.success_btn {
-    margin-left: 35%;
-    margin-top: 1em;
+.menuContent {
+    height: 40vh;
 }
 
-.show_btn {
-    margin: 3em;
-    margin-top: 0;
-    margin-bottom: 0.5em;
+
+/* Inscription menu*/
+
+#inscription-menu {
+    padding: 15px;
 }
 
-.modif_btn {
-    margin: 3em;
-    margin-top: 0.5em;
-    margin-bottom: 0;
-}
-
-.plat_name {
-    background-color: #55cfcd;
-    border-radius: 5px;
-    border: black 2px solid;
-    text-align: center;
-    margin-top: 0.5em;
-    width: 200px;
-    margin-left: 20px;
-    margin-right: 30px;
+#commande label {
+    color: #333;
+    font-size: 14px;
     margin-bottom: 5px;
+    display: block;
 }
 
-.plat_info h4 {
-    background-color: #55cfcd;
-    border-radius: 5px;
-    border: black 2px solid;
-    text-align: center;
-    width: 200px;
-    margin-left: 20px;
+#commande select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    background-color: white;
 }
 
-.plat_info h5 {
-    background-color: #3aa6aa;
-    border-radius: 5px;
-    border: black 2px solid;
-    text-align: center;
-    width: 200px;
-    margin-left: 20px;
-    text-wrap: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-.first {
-    margin-top: 2em;
-}
-
-.label {
-    width: 500px;
-    font-size: 20px;
-    margin-left: 35%;
-}
-
-.control {
-    width: 500px;
-    font-size: 15px;
-    margin-left: 35%;
-}
-
-.test {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-}
-
-.test label {
-    margin-right: 25px;
-    margin-left: 10px;
-}
-
-.test input {
-    flex: 0 0 50%;
-}
-
-.img-responsive {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Form user crud */
-#user div {
-    width: 50%;
-    margin: auto;
-}
-
-#user_statut div {
-    width: 50%;
-    margin: auto;
-}

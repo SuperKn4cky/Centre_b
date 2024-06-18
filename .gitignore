@@ -7,7 +7,7 @@
 /public/bundles/
 /var/
 /vendor/
-.prettierrc
+/migrations/*
 ###< symfony/framework-bundle ###
 
 ###> phpunit/phpunit ###

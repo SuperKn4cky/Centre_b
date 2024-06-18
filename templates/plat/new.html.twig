@@ -1,17 +1,11 @@
 {% extends 'base.html.twig' %}
 
-                {% block title %}
-                    Création d'un Plat
-                {% endblock %}
+{% block title %}New Plat{% endblock %}
 
-                {% block body %}
-                    {{ include('plat/_form.html.twig') }}
+{% block body %}
+    <h1>Create new Plat</h1>
 
-                    <a
-                        href="{{ path('app_plat_index', {'id': plat.id}) }}">
-                        <button
-                            class="btn btn-dark success_btn">
-                            Retour à la liste
-                        </button>
-                    </a>
-                {% endblock %}
+    {{ include('plat/_form.html.twig') }}
+
+    <a href="{{ path('app_plat_index') }}">back to list</a>
+{% endblock %}

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -45,8 +47,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $formation = null;
 
-    #[ORM\Column]
-    private ?bool $statut = null;
+    /**
+     * @var Collection<int, Menu>
+     */
+    #[ORM\ManyToMany(targetEntity: Menu::class, inversedBy: 'users')]
+    private Collection $inscription;
+
+    public function __construct()
+    {
+        $this->inscription = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -170,14 +180,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function isStatut(): ?bool
+    /**
+     * @return Collection<int, Menu>
+     */
+    public function getInscription(): Collection
     {
-        return $this->statut;
+        return $this->inscription;
     }
 
-    public function setStatut(bool $statut): static
+    public function addInscription(Menu $inscription): static
     {
-        $this->statut = $statut;
+        if (!$this->inscription->contains($inscription)) {
+            $this->inscription->add($inscription);
+        }
+
+        return $this;
+    }
+
+    public function removeInscription(Menu $inscription): static
+    {
+        $this->inscription->removeElement($inscription);
 
         return $this;
     }

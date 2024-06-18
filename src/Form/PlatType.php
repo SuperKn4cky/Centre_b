@@ -20,19 +20,19 @@ class PlatType extends AbstractType
             ->add('nom', TextType::class, [
                 'label' => "Nom",
                 'label_attr' => [
-                    'class' => 'form-label label first'
+                    'class' => ''
                 ],
                 'attr' => [
-                    'class' => 'form-control control'
+                    'class' => ''
                 ]
             ])
             ->add('composition', TextareaType::class, [
                 'label' => "Composition",
                 'label_attr' => [
-                    'class' => 'form-label label'
+                    'class' => ''
                 ],
                 'attr' => [
-                    'class' => 'form-control control'
+                    'class' => ''
                 ]
             ])
             ->add('type', ChoiceType::class, [
@@ -41,12 +41,6 @@ class PlatType extends AbstractType
                     'Entree' => 'Entree',
                     'Plat' => 'Plat',
                     'Dessert' => 'Dessert'
-                ],
-                'label_attr' => [
-                    'class' => 'form-label label'
-                ],
-                'attr' => [
-                    'class' => 'form-control control'
                 ]
             ])
             ->add('regime', ChoiceType::class, [
@@ -58,10 +52,10 @@ class PlatType extends AbstractType
                     'Autre' => 'Autre'
                 ],
                 'label_attr' => [
-                    'class' => 'form-label label'
+                    'class' => ''
                 ],
                 'attr' => [
-                    'class' => 'form-control control'
+                    'class' => ''
                 ]
             ])
             ->add('allergenes', EntityType::class, [
@@ -71,10 +65,10 @@ class PlatType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'label_attr' => [
-                    'class' => 'form-label label'
+                    'class' => ''
                 ],
                 'attr' => [
-                    'class' => 'form-control control test'
+                    'class' => ''
                 ]
             ])
         ;
